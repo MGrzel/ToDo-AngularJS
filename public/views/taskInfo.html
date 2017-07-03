@@ -1,0 +1,74 @@
+<div class="container task-info">
+    <div class="row">
+        <div class="col-xs-12">
+            <div ng-if="task == null">
+                <h2>Task not found</h2>
+                <a href="/" class="btn btn-primary">Back to list</a>
+            </div>
+
+            <div ng-if="task != null">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <strong>Title:</strong>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text" ng-model="task.title" class="form-control" ng-model-options="{ updateOn: 'blur' }" ng-change="checkForError('{{ task.title }}')">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-2">
+                        <strong>Finished:</strong>
+                    </div>
+                    <div class="col-xs-1">
+                        <div ng-if="task.finished">
+                            <i class="fa fa-check-square-o fa-2x" aria-hidden="true" ng-click="taskService.changeStatus(task)"></i>
+                        </div>
+                        <div ng-if="!task.finished">
+                            <i class="fa fa-square-o fa-2x" aria-hidden="true" ng-click="taskService.changeStatus(task)"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div ng-if="task.finished" class="finished">
+                            Task Finished
+                        </div>
+                        <div ng-if="!task.finished" class="not-finished">
+                            Task not finished
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <strong>Category:</strong>
+                    </div>
+                    <div class="col-xs-4">
+                        <select ng-model="task.categoryId" class="form-control">
+                        <option ng-repeat="category in categoryService.categoryList" ng-value="{{ category.id }}">
+                            {{ category.value }}
+                        </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row task-note">
+                    <div class="col-xs-2">
+                        <strong>Notes:</strong>
+                    </div>
+                    <div class="col-xs-1">
+                        <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" ng-click="changeEditStatus()"></i>
+                    </div>
+                    <div class="col-xs-4">
+
+                        <div ng-if="editMode">
+                            <input type="text" ng-model="task.taskNote" class="form-control">
+                        </div>
+                        <div ng-if="!editMode">
+                            {{ task.taskNote }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

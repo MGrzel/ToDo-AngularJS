@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row adding-form">
+        <div class="col-xs-12" ng-if="error">
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <div class="col-xs-10">
+                    {{ error }}
+                </div>
+                <div class="col-xs-2">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close" ng-click="clearError()"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+        </div>
+        <form ng-submit="addCategory()">
+            <div class="col-xs-8">
+                <input type="text" placeholder="Add new category" class="form-control" ng-model="newCategory">
+            </div>
+
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row category-list">
+        <div class="col-xs-12" ng-repeat="category in categoryService.categoryList">
+            <div class="container-fluid category">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <select ng-model="category.colorId" class="form-control">
+                            <option ng-repeat="color in categoryService.colorList" ng-value="{{ color.id }}">
+                                {{ color.name | uppercase}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text" ng-model="category.value" class="form-control" ng-model-options="{ updateOn: 'blur' }" ng-change="checkForError(category, '{{ category.value }}')">
+                    </div>
+                    <div class="col-xs-4">
+                        <i class="fa fa-trash-o fa-2x" aria-hidden="true" ng-click="removeCategory(category.id)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+html, body {
+    /*background-color: #293B31;*/
+    background-color: whitesmoke;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.adding-form {
+    margin-bottom: 20px;
+}
+
+.adding-form button {
+    width: 100%;
+}
+
+.btn {
+    background-color: #313B72;
+    border-color: #313B72;
+}
+
+.task {
+    margin-bottom: 20px;
+    min-height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #C3ACCE;
+}
+
+.task-done {
+    background-color: #605A9A;
+}
+
+.task .fa:hover {
+    color: white;
+}
+
+.task:hover {
+    transition-duration: 0.5s;
+    background: #726DA8;
+}
+
+.category {
+    margin-bottom: 20px;
+    min-height: 50px;
+    line-height: 50px;
+    border-radius: 8px;
+    background-color: #B3A39E;
+}
+
+.category .fa:hover {
+    color: white;
+}
+
+.category .form-control {
+    display: inline;
+}
+
+.category:hover {
+    transition-duration: 0.5s;
+    background: #9D8983;
+}
+
+.category input {
+    border: 1px solid black;
+}
+
+.fa {
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.alert {
+    min-height: 45px;
+}
+
+.task-info .row {
+    margin: 20px;
+}
+
+.task-info .fa:hover {
+    color: grey;
+}
+
+.task-info input {
+    color: black;
+}
+
+.task-note input {
+    min-height: 50px;
+}
+
+.task-note {
+      word-wrap: break-word;
+}
+
+.finished {
+    color: darkgreen;
+}
+
+.not-finished {
+    color: red;
+}
+
+.fade.in {
+    opacity: 3;
+}
+
+.task, .task-info, .category, .adding-form {
+    font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+    font-size: 1.2em;
+}
+
+.badge-color {
+    background-color: green;
+}

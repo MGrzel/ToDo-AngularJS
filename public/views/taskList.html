@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row adding-form">
+        <div class="col-xs-12" ng-if="error">
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <div class="col-xs-10">
+                    {{ error }}
+                </div>
+                <div class="col-xs-2">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close" ng-click="clearError()"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+        </div>
+        <form ng-submit="addTask()">
+            <div class="col-xs-2">
+                <select ng-model="selectedCategory" class="form-control">
+                    <option ng-repeat="category in categoryService.categoryList" value="{{ category.id }}">
+                        {{category.value}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <input type="text" placeholder="Add new task" class="form-control" ng-model="newTaskTitle">
+            </div>
+
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row task-list">
+        <div class="col-xs-12" ng-repeat="task in taskService.taskList">
+            <div class="container-fluid task" ng-click="showTask(task.id)" ng-class="{'task-done': task.finished}">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <span class="label label-primary" ng-style="{'background-color': '{{ categoryService.getColorByCategoryId(task.categoryId) }}'}">{{ categoryService.getCategoryValue(task.categoryId) }} </span>
+                    </div>
+                    <div class="col-xs-4">
+                        <strong>{{ task.title }}</strong>
+                    </div>
+                    <div class="col-xs-2">
+                        <div ng-if="task.finished">
+                            <i class="fa fa-check-square-o fa-2x" aria-hidden="true" ng-click="$event.stopPropagation(); taskService.changeStatus(task)"></i>
+                        </div>
+                        <div ng-if="!task.finished">
+                            <i class="fa fa-square-o fa-2x" aria-hidden="true" ng-click="$event.stopPropagation(); taskService.changeStatus(task)"></i>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <i class="fa fa-trash-o fa-2x" aria-hidden="true" ng-click="$event.stopPropagation(); taskService.removeTask(task.id)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
