@@ -78,10 +78,7 @@ angular.module('ToDoApp').factory('CategoryService', ['TaskService', function (T
 
         selectedCategory: {
             id: 0,
-            value: 'Uczelnia'
         },
-
-        lastId: 3,
 
         getCategoryValue(id) {
             for (let i in this.categoryList) {
@@ -121,14 +118,10 @@ angular.module('ToDoApp').factory('CategoryService', ['TaskService', function (T
 
             this.categoryList.push({
 
-                id: this.lastId + 1,
+                id: this.categoryList.length,
                 value: value,
                 colorId: 0
-
             });
-
-            this.lastId++;
-
         },
 
         removeCategory(id) {

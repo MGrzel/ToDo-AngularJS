@@ -32,12 +32,10 @@ app.factory('TaskService', function () {
         ],
 
         getTask(id) {
-
             for(let i in this.taskList) {
                 if(this.taskList[i].id == id)
                     return this.taskList[i];
             }
-
             return null;
         },
 

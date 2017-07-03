@@ -12,8 +12,8 @@
         </div>
         <form ng-submit="addTask()">
             <div class="col-xs-2">
-                <select ng-model="selectedCategory" class="form-control">
-                    <option ng-repeat="category in categoryService.categoryList" value="{{ category.id }}">
+                <select ng-model="selectedCategory.id" class="form-control">
+                    <option ng-repeat="category in categoryService.categoryList" ng-value="{{ category.id }}">
                         {{category.value}}
                     </option>
                 </select>

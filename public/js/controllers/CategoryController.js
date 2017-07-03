@@ -28,7 +28,7 @@ angular.module('ToDoApp').controller('CategoryController', ['$scope', 'TaskServi
             $scope.error = false;
 
             CategoryService.addCategory($scope.newCategory);
-
+            $scope.newCategory = '';
         }
 
         $scope.clearError = function () {

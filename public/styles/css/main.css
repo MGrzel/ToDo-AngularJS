@@ -73,7 +73,7 @@ html, body {
 }
 
 .alert {
-    min-height: 45px;
+    min-height: 70px;
 }
 
 .task-info .row {
